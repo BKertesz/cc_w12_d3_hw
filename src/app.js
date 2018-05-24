@@ -3,8 +3,8 @@ const Number = require('./models/number.js');
 const FactView = require('./views/fact_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const factForm = document.querySelector('#number-fact')
-  const factView = new FactView(factForm);
+  const view = document.querySelector('#number-fact')
+  const factView = new FactView(view);
   factView.bindEvents();
 
   const number = new Number();

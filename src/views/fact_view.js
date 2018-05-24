@@ -1,18 +1,20 @@
 const PubSub = require('../helpers/pub_sub.js')
 
-const FactView = function(form){
-  this.form = form;
+const FactView = function(view){
+  this.view = view;
+
 }
 
 FactView.prototype.setupListener = function () {
   PubSub.subscribe('Number:number-info',(evt)=>{
     this.render(evt.detail);
-    console.log(evt.detail)
+    // console.log(evt.detail)
   })
 };
 
 FactView.prototype.render = function (numberFact) {
-  this.form.innerHTML ='';
+  this.view.innerHTML ='';
+
   const number = document.createElement('h3');
   number.textContent = `Number: ${numberFact.number}`;
 
@@ -20,8 +22,8 @@ FactView.prototype.render = function (numberFact) {
   text.textContent = `Fact: ${numberFact.text}`
 
 
-  this.form.appendChild(number);
-  this.form.appendChild(text);
+  this.view.appendChild(number);
+  this.view.appendChild(text);
 };
 
 

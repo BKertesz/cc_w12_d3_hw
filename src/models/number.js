@@ -19,8 +19,12 @@ Number.prototype.getData = function(number){
   const request = new Request(`http://numbersapi.com/${number}?json`)
   // console.log(request)
   request.get((data)=>{
+    // console.log(data)
+
     this.numberData.number = data.number;
     this.numberData.text = data.text;
+
+
     PubSub.publish('Number:number-info',this.numberData)
   })
 
